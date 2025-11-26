@@ -1,32 +1,24 @@
 package com.example.bookcare;
 
 import android.os.Bundle;
-import android.util.Log;
 
+import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.FirebaseApp;
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
 
 public class MainActivity extends AppCompatActivity {
-
-    private static final String TAG = "FirebaseTest";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
-
-        try {
-            // Initialize Firebase (optional, usually auto)
-            FirebaseApp.initializeApp(this);
-
-            // Get FirebaseAuth instance
-            FirebaseAuth auth = FirebaseAuth.getInstance();
-            Log.d(TAG, "FirebaseAuth initialized: " + auth);
-
-        } catch (Exception e) {
-            Log.e(TAG, "Firebase failed to initialize", e);
-        }
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
+            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
+            return insets;
+        });
     }
 }
