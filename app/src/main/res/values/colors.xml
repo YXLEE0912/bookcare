@@ -1,5 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+    <!-- Palette from first image -->
+    <color name="eco_green_dark">#3F5A4A</color>
+    <color name="eco_green">#6D8269</color>
+    <color name="eco_green_light">#9DAD8E</color>
+    <color name="eco_beige">#E3CFC1</color>
+    <color name="eco_beige_light">#F4E3D9</color>
+
+    <!-- Basics -->
+    <color name="eco_background">#FFF8F0</color>
+    <color name="eco_surface">#FFFFFFFF</color>
+    <color name="eco_text_primary">#222222</color>
+    <color name="eco_text_secondary">#666666</color>
+    <color name="eco_divider">#E0E0E0</color>
+    <color name="eco_button_primary">#3F5A4A</color>
+    <color name="eco_button_primary_text">#FFFFFF</color>
+    <color name="eco_button_secondary">#FFFFFF</color>
+    <color name="eco_button_secondary_text">#3F5A4A</color>
+
+    //colour for my listings
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+    <color name="gray">#888888</color>
+    <color name="green">#2E7D32</color>
+    <color name="yellow">#FBC02D</color>
+    <color name="light_gray">#F5F5F5</color>
+    <color name="red">#F44336</color>
 </resources>

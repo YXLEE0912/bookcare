@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">BookCare</string>
+    <string name="desc">Left arrow button</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
 </resources>

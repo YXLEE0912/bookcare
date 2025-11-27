@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="12dp"
+    app:cardElevation="4dp"
+    app:cardCornerRadius="8dp"
+    android:background="@color/white">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="12dp">
+
+        <TextView
+            android:id="@+id/tvBookTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Book Title"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="@color/black"/>
+
+        <TextView
+            android:id="@+id/tvBookAuthor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Author Name"
+            android:textSize="14sp"
+            android:textColor="@color/gray"
+            android:layout_marginTop="2dp"/>
+
+        <TextView
+            android:id="@+id/tvBookStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Available"
+            android:textSize="12sp"
+            android:textColor="@color/green"
+            android:layout_marginTop="4dp"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="6dp">
+
+            <TextView
+                android:id="@+id/tvViews"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0 views"
+                android:textSize="12sp"
+                android:textColor="@color/gray"/>
+
+            <TextView
+                android:id="@+id/tvInterested"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0 interested"
+                android:textSize="12sp"
+                android:textColor="@color/gray"
+                android:layout_marginStart="12dp"/>
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btnDelete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Delete"
+            android:textSize="12sp"
+            android:textColor="@color/white"
+            android:backgroundTint="@color/red"
+            android:layout_marginTop="6dp"/>
+
+    </LinearLayout>
+</androidx.cardview.widget.CardView>
