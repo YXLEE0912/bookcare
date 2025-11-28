@@ -4,6 +4,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -12,14 +13,23 @@ import java.util.List;
 public class BookAdapter extends RecyclerView.Adapter<BookAdapter.BookViewHolder> {
 
     private List<Book> books;
+    public interface OnBooksChangedListener {
+        void onBooksChanged(int count);
+    }
+    private final OnBooksChangedListener listener;
 
     public BookAdapter(List<Book> books) {
+        this(books, null);
+    }
+
+    public BookAdapter(List<Book> books, OnBooksChangedListener listener) {
         this.books = books;
+        this.listener = listener;
     }
 
     public static class BookViewHolder extends RecyclerView.ViewHolder {
         TextView tvTitle, tvAuthor, tvStatus, tvViews, tvInterested;
-        Button btnDelete; // <-- DECLARE it here as a field
+        ImageButton btnDelete;
         public BookViewHolder(@NonNull View itemView) {
             super(itemView);
             tvTitle = itemView.findViewById(R.id.tvBookTitle);
@@ -53,6 +63,9 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.BookViewHolder
             books.remove(position);          // remove from list
             notifyItemRemoved(position);     // notify RecyclerView
             notifyItemRangeChanged(position, books.size());
+            if (listener != null) {
+                listener.onBooksChanged(books.size());
+            }
         });
     }
 
@@ -65,5 +78,8 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.BookViewHolder
     public void addBook(Book book) {
         books.add(book);
         notifyItemInserted(books.size() - 1);
+        if (listener != null) {
+            listener.onBooksChanged(books.size());
+        }
     }
 }
