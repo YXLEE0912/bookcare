@@ -1,5 +1,9 @@
 <resources>
+<<<<<<< HEAD
     <string name="app_name">BookCare_MarketPlace</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+=======
+    <string name="app_name">bookcare</string>
+>>>>>>> 63228a2d8bbe1d61bbf25d77e157d602bc5a0005
 </resources>

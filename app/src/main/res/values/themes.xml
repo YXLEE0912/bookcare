@@ -1,9 +1,17 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
+<<<<<<< HEAD
     <style name="Base.Theme.BookCare_MarketPlace" parent="Theme.Material3.DayNight.NoActionBar">
+=======
+    <style name="Base.Theme.Bookcare" parent="Theme.Material3.DayNight.NoActionBar">
+>>>>>>> 63228a2d8bbe1d61bbf25d77e157d602bc5a0005
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
     </style>
 
+<<<<<<< HEAD
     <style name="Theme.BookCare_MarketPlace" parent="Base.Theme.BookCare_MarketPlace" />
+=======
+    <style name="Theme.Bookcare" parent="Base.Theme.Bookcare" />
+>>>>>>> 63228a2d8bbe1d61bbf25d77e157d602bc5a0005
 </resources>

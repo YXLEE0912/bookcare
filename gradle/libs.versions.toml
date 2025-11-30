@@ -1,5 +1,9 @@
 [versions]
 agp = "8.13.1"
+<<<<<<< HEAD
+=======
+firebaseBom = "34.6.0"
+>>>>>>> 63228a2d8bbe1d61bbf25d77e157d602bc5a0005
 junit = "4.13.2"
 junitVersion = "1.3.0"
 espressoCore = "3.7.0"
@@ -9,6 +13,10 @@ activity = "1.12.0"
 constraintlayout = "2.2.1"
 
 [libraries]
+<<<<<<< HEAD
+=======
+firebase-bom = { module = "com.google.firebase:firebase-bom", version.ref = "firebaseBom" }
+>>>>>>> 63228a2d8bbe1d61bbf25d77e157d602bc5a0005
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 ext-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
 espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
