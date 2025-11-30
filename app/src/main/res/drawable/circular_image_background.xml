@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="oval">
+    <!-- Simple placeholder color for the profile image background -->
+    <solid android:color="#D0D0D0" />
+    <!-- No explicit corners needed, as the shape is oval -->
+</shape>

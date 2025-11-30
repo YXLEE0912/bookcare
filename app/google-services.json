@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "486964872182",
+    "project_id": "mad-bookcare",
+    "storage_bucket": "mad-bookcare.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:486964872182:android:bdaaa90197a8715351fdd7",
+        "android_client_info": {
+          "package_name": "com.example.bookcare_marketplace"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyClDYmK60Msj5qJDs25MCU1cvSNvQ0Iwc4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
