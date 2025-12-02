@@ -1,40 +1,15 @@
-# Android .gitignore for Firebase Project
-
-# Gradle
-
-.gradle/
-build/
-*/build/
-
-# Local configuration file (SDK path, etc.)
-
-local.properties
-
-# Log files
-
-*.log
-
-# Android Studio
-
-.idea/
 *.iml
-*.hprof
-
-# Firebase & sensitive files
-
-google-services.json
-
-# OS Files
-
+.gradle
+/local.properties
+/.idea/caches
+/.idea/libraries
+/.idea/modules.xml
+/.idea/workspace.xml
+/.idea/navEditor.xml
+/.idea/assetWizardSettings.xml
 .DS_Store
-Thumbs.db
-
-# Kotlin
-
-*.kotlin_module
-
-# Misc
-
-captures/
-externalNativeBuild/
-.cxx/
+/build
+/captures
+.externalNativeBuild
+.cxx
+local.properties

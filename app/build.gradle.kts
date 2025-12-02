@@ -6,12 +6,12 @@ plugins {
 
 android {
     namespace = "com.example.bookcare"
-    compileSdk = 33  // ⬇️ DOWNGRADE to 33 (more stable)
+    compileSdk = 33
 
     defaultConfig {
         applicationId = "com.example.bookcare"
         minSdk = 24
-        targetSdk = 33  // ⬇️ DOWNGRADE to 33
+        targetSdk = 33
         versionCode = 1
         versionName = "1.0"
     }
@@ -27,7 +27,7 @@ android {
     }
 
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8  // ⬇️ Use Java 8
+        sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
     }
 
@@ -37,16 +37,26 @@ android {
 }
 
 dependencies {
-    // Basic Android
-    implementation("androidx.core:core-ktx:1.9.0")
+    // Basic Android - COMPATIBLE WITH SDK 33
+    implementation("androidx.core:core-ktx:1.10.1")        // ← COMPATIBLE VERSION
     implementation("androidx.appcompat:appcompat:1.6.1")
-    implementation("com.google.android.material:material:1.8.0")
+    implementation("com.google.android.material:material:1.9.0")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
 
-    // Firebase BOM (LATEST STABLE)
-    implementation(platform("com.google.firebase:firebase-bom:32.7.0"))
+    // RecyclerView for displaying posts
+    implementation("androidx.recyclerview:recyclerview:1.3.1")
+
+    // Glide for image loading
+    implementation("com.github.bumptech.glide:glide:4.15.1")
+
+    // Firebase BOM (COMPATIBLE VERSION)
+    implementation(platform("com.google.firebase:firebase-bom:32.3.1"))  // ← OLDER BUT STABLE
+
+    // Firebase dependencies
     implementation("com.google.firebase:firebase-analytics-ktx")
     implementation("com.google.firebase:firebase-auth-ktx")
     implementation("com.google.firebase:firebase-firestore-ktx")
     implementation("com.google.firebase:firebase-storage-ktx")
+    implementation("com.google.firebase:firebase-database-ktx")
+    implementation(libs.firebase.database)
 }
