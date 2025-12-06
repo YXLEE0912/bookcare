@@ -13,7 +13,6 @@ To run this project, you **must** connect it to your own Firebase backend. Follo
 *   **Android package name**: This is the most important step. The package name you enter here **must** match the `applicationId` in the `app/build.gradle.kts` file. For this project, use:
     *   `com.example.bookcare`
 *   **App nickname** (Optional): Give your app a memorable name (e.g., "Community Forum App").
-*   **Debug signing certificate SHA-1** (Optional): You can skip this for now.
 *   Click **"Register app"**.
 
 ### 3. Download and Place the `google-services.json` File
