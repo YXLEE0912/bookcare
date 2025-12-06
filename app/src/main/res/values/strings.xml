@@ -1,3 +1,8 @@
 <resources>
-    <string name="app_name">bookcare</string>
+    <string name="app_name">Forum</string>
+    <string-array name="post_types">
+        <item>Discussion</item>
+        <item>Review</item>
+        <item>Event</item>
+    </string-array>
 </resources>

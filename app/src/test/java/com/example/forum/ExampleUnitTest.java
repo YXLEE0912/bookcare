@@ -1,4 +1,4 @@
-package com.example.bookcare;
+package com.example.forum;
 
 import org.junit.Test;
 

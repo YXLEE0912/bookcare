@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1030177701644",
+    "project_id": "bookcare-c427d",
+    "storage_bucket": "bookcare-c427d.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1030177701644:android:7118621209e4abe33ad329",
+        "android_client_info": {
+          "package_name": "com.example.bookcare"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCknZpdyRrHa52sG1nVd6DsJkXKFc91H4I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
