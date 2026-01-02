@@ -8,73 +8,56 @@
     android:background="?android:attr/colorBackground"
     android:fitsSystemWindows="true">
 
-    <!-- 1. Top Action Bar: Back Navigation and Title (Fixed) -->
-    <LinearLayout
-        android:id="@+id/top_app_bar"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center_vertical"
-        android:paddingTop="16dp"
-        android:paddingStart="16dp"
-        android:paddingEnd="16dp"
-        app:layout_constraintTop_toTopOf="parent"
+    <!-- Top Action Bar -->
+
+    <ImageView
+        android:id="@+id/back_navigation_area"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:clickable="true"
+        android:focusable="true"
+        android:padding="8dp"
+        android:rotation="180"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/arrow_icon" />
 
-        <!-- Clickable Back/Undo Area -->
-        <LinearLayout
-            android:id="@+id/back_navigation_area"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:orientation="horizontal"
-            android:gravity="center_vertical"
-            android:paddingEnd="12dp"
-            android:clickable="true"
-            android:focusable="true"
-            android:background="?android:attr/selectableItemBackground">
+    <TextView
+        android:id="@+id/header_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/abril_fatface"
+        android:text="Book Details"
+        android:textColor="#1B621E"
+        android:textSize="25sp"
+        app:layout_constraintTop_toTopOf="@+id/back_navigation_area"
+        app:layout_constraintBottom_toBottomOf="@+id/back_navigation_area"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
-            <!-- Icon: Arrow/Undo -->
-            <ImageView
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:src="@drawable/ic_arrow_back"
-                android:contentDescription="Back"
-                app:tint="#333333"/>
-
-            <!-- Text: Back (optional, but requested) -->
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Back"
-                android:textSize="16sp"
-                android:textColor="#333333"
-                android:fontFamily="sans-serif-medium"
-                android:layout_marginStart="4dp"/>
-
-        </LinearLayout>
-
-    </LinearLayout>
-
-    <!-- 2. ScrollView for Main Content (Long Description Support) -->
+    <!-- ScrollView for Main Content -->
     <ScrollView
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintTop_toBottomOf="@+id/top_app_bar"
+        app:layout_constraintTop_toBottomOf="@+id/back_navigation_area"
         app:layout_constraintBottom_toTopOf="@+id/bottom_action_button"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:paddingStart="16dp"
         android:paddingEnd="16dp"
-        android:fillViewport="false">
+        android:fillViewport="true">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
+            android:paddingTop="16dp"
             android:paddingBottom="16dp">
 
-            <!-- Book Title (Poppins Bold) -->
+            <!-- Book Title -->
             <TextView
                 android:id="@+id/book_title"
                 android:layout_width="wrap_content"
@@ -83,10 +66,9 @@
                 android:textSize="28sp"
                 android:textColor="#333333"
                 android:textStyle="bold"
-                android:fontFamily="sans-serif-condensed"
-                android:layout_marginTop="8dp"/>
+                android:fontFamily="@font/abril_fatface"/>
 
-            <!-- Author (Roboto Regular) -->
+            <!-- Author -->
             <TextView
                 android:id="@+id/book_author"
                 android:layout_width="wrap_content"
@@ -94,26 +76,48 @@
                 android:text="by Matt Haig"
                 android:textSize="18sp"
                 android:textColor="#555555"
-                android:fontFamily="sans-serif"
-                android:layout_marginBottom="8dp"/>
+                android:fontFamily="@font/amethysta"
+                android:layout_marginBottom="16dp"/>
 
-            <!-- Condition Tag (Rounded background from drawable) -->
-            <TextView
-                android:id="@+id/condition_tag"
+            <!-- Tags -->
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Like New"
-                android.textSize="14sp"
-                android:textColor="#388E3C"
-                android:fontFamily="sans-serif"
-                android:paddingStart="10dp"
-                android:paddingEnd="10dp"
-                android:paddingTop="4dp"
-                android:paddingBottom="4dp"
-                android:background="@drawable/rounded_tag_background"
-                android:layout_marginBottom="24dp"/>
+                android:orientation="horizontal"
+                android:layout_marginBottom="24dp">
 
-            <!-- Card 1: Description (White Square Background) -->
+                <TextView
+                    android:id="@+id/condition_tag"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Like New"
+                    android:textSize="14sp"
+                    android:textColor="#1B621E"
+                    android:fontFamily="sans-serif-medium"
+                    android:paddingStart="12dp"
+                    android:paddingEnd="12dp"
+                    android:paddingTop="6dp"
+                    android:paddingBottom="6dp"
+                    android:background="@drawable/rounded_tag_background"/>
+
+                <TextView
+                    android:id="@+id/genres_tag"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Science Fiction"
+                    android:textSize="14sp"
+                    android:textColor="#1B621E"
+                    android:fontFamily="sans-serif-medium"
+                    android:paddingStart="12dp"
+                    android:paddingEnd="12dp"
+                    android:paddingTop="6dp"
+                    android:paddingBottom="6dp"
+                    android:background="@drawable/rounded_tag_background"
+                    android:layout_marginStart="8dp"/>
+
+            </LinearLayout>
+
+            <!-- Description Card -->
             <LinearLayout
                 android:id="@+id/description_card"
                 android:layout_width="match_parent"
@@ -128,12 +132,11 @@
                     android:layout_height="wrap_content"
                     android:text="Description"
                     android:textSize="18sp"
-                    android:textColor="#333333"
+                    android:textColor="#1B621E"
+                    android:fontFamily="@font/amethysta"
                     android:textStyle="bold"
-                    android:fontFamily="sans-serif-condensed"
                     android:layout_marginBottom="8dp"/>
 
-                <!-- Description content (Roboto Regular) -->
                 <TextView
                     android:id="@+id/book_description"
                     android:layout_width="match_parent"
@@ -145,7 +148,7 @@
 
             </LinearLayout>
 
-            <!-- Card 2: Book Owner (White Square Background) -->
+            <!-- Book Owner Card -->
             <LinearLayout
                 android:id="@+id/owner_card"
                 android:layout_width="match_parent"
@@ -159,9 +162,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="12dp"
-                    android:fontFamily="sans-serif-condensed"
+                    android:fontFamily="@font/amethysta"
                     android:text="Book Owner"
-                    android:textColor="#333333"
+                    android:textColor="#1B621E"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
@@ -171,34 +174,28 @@
                     android:gravity="center_vertical"
                     android:orientation="horizontal">
 
-                    <!-- Owner Profile Image Placeholder -->
                     <ImageView
                         android:id="@+id/owner_profile_picture"
                         android:layout_width="48dp"
                         android:layout_height="48dp"
                         android:layout_marginEnd="12dp"
-                        android:background="@drawable/circular_image_background"
-                        android:contentDescription="Owner Profile Picture"
                         android:scaleType="centerCrop"
                         tools:src="@tools:sample/avatars" />
 
-                    <!-- 2. Text Column (Vertical for Name and Phone) -->
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:orientation="vertical">
 
-                        <!-- Owner Name -->
                         <TextView
                             android:id="@+id/owner_name"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:fontFamily="sans-serif"
+                            android:fontFamily="sans-serif-medium"
                             android:text="Sarah Johnson"
                             android:textColor="#333333"
                             android:textSize="16sp" />
 
-                        <!-- Owner Phone Number (Plain Text) -->
                         <TextView
                             android:id="@+id/owner_phone_number"
                             android:layout_width="wrap_content"
@@ -210,31 +207,27 @@
                             android:textSize="14sp" />
 
                     </LinearLayout>
-
                 </LinearLayout>
-
             </LinearLayout>
-
         </LinearLayout>
-
     </ScrollView>
 
-    <!-- 3. Request Exchange Button -->
+    <!-- Action Button -->
     <Button
         android:id="@+id/bottom_action_button"
-        style="@style/AppButton"
         android:layout_width="0dp"
-        android:layout_height="56dp"
+        android:layout_height="60dp"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginBottom="84dp"
+        android:layout_marginBottom="24dp"
+        android:backgroundTint="#1B621E"
+        android:fontFamily="sans-serif-medium"
         android:text="Request Exchange"
+        android:textColor="@android:color/white"
         android:textSize="18sp"
+        app:cornerRadius="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <!--haha-->
-

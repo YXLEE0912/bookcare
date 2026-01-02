@@ -6,7 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
@@ -45,7 +45,7 @@ public class Add_New_Book extends Fragment {
         final boolean forceExchange = getArguments() != null && getArguments().getBoolean("forceExchange", false);
         NavController navController = Navigation.findNavController(view);
 
-        ImageButton btnBack = view.findViewById(R.id.BtnLeftArrow);
+        ImageView btnBack = view.findViewById(R.id.BtnLeftArrow);
         Button btnCancel = view.findViewById(R.id.BtnCancel);
         View.OnClickListener goHome = v -> navController.navigateUp();
         btnBack.setOnClickListener(goHome);

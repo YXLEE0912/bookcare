@@ -47,10 +47,10 @@ public class activity_book_exchange extends AppCompatActivity {
         int pointsPerBook;
         if (isDonation) {
             pointsPerBook = Constants.POINTS_PER_BOOK_DONATION;
-            binding.bookExchangesText1.setText(R.string.book_donation_label);
+            binding.bookExchangeLabel.setText(R.string.book_donation_label);
         } else {
             pointsPerBook = Constants.POINTS_PER_BOOK_EXCHANGE;
-            binding.bookExchangesText1.setText(R.string.book_exchange_label);
+            binding.bookExchangeLabel.setText(R.string.book_exchange_label);
         }
         
         // Set points per book immediately as it is constant

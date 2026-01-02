@@ -52,10 +52,6 @@ public class CommunityFragment extends Fragment implements PostAdapter.OnPostInt
         binding.rvPosts.setAdapter(postAdapter);
 
         postsRef = FirebaseDatabase.getInstance(Constants.FIREBASE_DATABASE_URL).getReference(Constants.PATH_POSTS);
-        
-        // Note: Activity feed functionality is now available
-        // The activity feed is populated when users donate/exchange books in BookDonationActivity/BookExchangeActivity
-        // You can add a separate RecyclerView or tab to display activity feed items if needed
 
         binding.fabNewPost.setOnClickListener(v -> showCreatePostDialog());
     }

@@ -4,7 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageButton;
+import android.widget.ImageView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -41,12 +41,12 @@ public class EcoPointsHistoryFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        RecyclerView rvHistory = view.findViewById(R.id.rvHistory);
+        RecyclerView rvHistory = view.findViewById(R.id.historyRecyclerView);
         transactionAdapter = new PointTransactionAdapter(transactionList);
         rvHistory.setLayoutManager(new LinearLayoutManager(getContext()));
         rvHistory.setAdapter(transactionAdapter);
 
-        ImageButton btnBack = view.findViewById(R.id.btn_back);
+        ImageView btnBack = view.findViewById(R.id.backButton);
         btnBack.setOnClickListener(v -> Navigation.findNavController(v).navigateUp());
 
         // Load transaction history from Firebase

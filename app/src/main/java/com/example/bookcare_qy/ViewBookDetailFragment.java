@@ -8,7 +8,6 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -51,13 +50,14 @@ public class ViewBookDetailFragment extends Fragment {
                              @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_view_book_detail, container, false);
 
-        LinearLayout backNav = view.findViewById(R.id.back_navigation_area);
+        ImageView backNav = view.findViewById(R.id.back_navigation_area);
         backNav.setOnClickListener(v -> Navigation.findNavController(v).navigateUp());
 
         if (book != null) {
             TextView tvTitle = view.findViewById(R.id.book_title);
             TextView tvAuthor = view.findViewById(R.id.book_author);
             TextView tvCondition = view.findViewById(R.id.condition_tag);
+            TextView tvGenres = view.findViewById(R.id.genres_tag);
             TextView tvDescription = view.findViewById(R.id.book_description);
             TextView tvOwnerName = view.findViewById(R.id.owner_name);
             TextView tvOwnerPhone = view.findViewById(R.id.owner_phone_number);
@@ -68,8 +68,14 @@ public class ViewBookDetailFragment extends Fragment {
             tvAuthor.setText(book.getAuthor() != null ? "by " + book.getAuthor() : "by Unknown Author");
 
             String conditionText = book.getCondition() != null && !book.getCondition().isEmpty()
-                    ? book.getCondition() : (book.getGenre() != null ? book.getGenre() : "Available");
+                    ? book.getCondition() : "Not specified";
             tvCondition.setText(conditionText);
+
+            if (book.getGenre() != null && !book.getGenre().isEmpty()) {
+                tvGenres.setText(book.getGenre());
+            } else {
+                tvGenres.setVisibility(View.GONE);
+            }
 
             // Display description from user input
             String description = book.getDescription() != null && !book.getDescription().isEmpty()

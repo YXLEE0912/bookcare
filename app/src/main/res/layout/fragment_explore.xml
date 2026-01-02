@@ -1,115 +1,126 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <ScrollView
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="?android:attr/colorBackground"
         android:fillViewport="true">
 
-        <LinearLayout
-            android:id="@+id/rootLayout"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:paddingHorizontal="16dp"
-            android:paddingTop="8dp"
-            android:paddingBottom="8dp">
+            android:padding="16dp"
+            tools:context=".ExploreFragment">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_vertical"
-                android:orientation="horizontal"
-                android:minHeight="48dp"/>
-
+            <!-- Search Bar -->
             <EditText
                 android:id="@+id/etSearch"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="48dp"
-                android:layout_marginTop="12dp"
+                android:layout_marginTop="48dp"
                 android:background="@drawable/rounded_edittext"
                 android:drawableStart="@android:drawable/ic_menu_search"
                 android:drawablePadding="10dp"
                 android:hint="Search books, authors, genres..."
                 android:paddingHorizontal="12dp"
                 android:paddingVertical="10dp"
-                android:textColor="@color/black"
-                android:textColorHint="#8C8C8C" />
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
+            <!-- Action Buttons -->
             <LinearLayout
-                android:layout_width="match_parent"
+                android:id="@+id/action_buttons_layout"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                android:gravity="center"
-                android:orientation="horizontal">
+                android:layout_marginTop="16dp"
+                android:orientation="horizontal"
+                app:layout_constraintTop_toBottomOf="@+id/etSearch"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent">
 
-                <LinearLayout
+                <androidx.cardview.widget.CardView
                     android:id="@+id/btnUploadBook"
                     android:layout_width="0dp"
-                    android:layout_height="80dp"
-                    android:layout_marginEnd="8dp"
+                    android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:background="@drawable/rounded_edittext"
+                    android:layout_marginEnd="8dp"
                     android:clickable="true"
                     android:focusable="true"
-                    android:foreground="?attr/selectableItemBackground"
-                    android:gravity="center"
-                    android:orientation="vertical"
-                    android:padding="8dp">
+                    app:cardCornerRadius="16dp"
+                    app:cardElevation="4dp">
 
-                    <ImageView
-                        android:layout_width="28dp"
-                        android:layout_height="28dp"
-                        android:src="@drawable/ic_launcher_foreground"
-                        android:contentDescription="Upload book" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="6dp"
-                        android:text="Upload Book"
-                        android:textColor="@color/black"
-                        android:textSize="13sp"
-                        android:textStyle="bold" />
-                </LinearLayout>
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:padding="16dp">
 
-                <LinearLayout
+                        <ImageView
+                            android:layout_width="28dp"
+                            android:layout_height="28dp"
+                            android:src="@drawable/ic_launcher_foreground" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="6dp"
+                            android:fontFamily="@font/roboto_medium"
+                            android:text="Upload Book"
+                            android:textColor="@color/black"
+                            android:textSize="13sp" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
                     android:id="@+id/btnMyListings"
                     android:layout_width="0dp"
-                    android:layout_height="80dp"
-                    android:layout_marginStart="8dp"
+                    android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:background="@drawable/rounded_edittext"
+                    android:layout_marginStart="8dp"
                     android:clickable="true"
                     android:focusable="true"
-                    android:foreground="?attr/selectableItemBackground"
-                    android:gravity="center"
-                    android:orientation="vertical"
-                    android:padding="8dp">
+                    app:cardCornerRadius="16dp"
+                    app:cardElevation="4dp">
 
-                    <ImageView
-                        android:layout_width="28dp"
-                        android:layout_height="28dp"
-                        android:src="@drawable/ic_launcher_foreground"
-                        android:contentDescription="My listings" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="6dp"
-                        android:text="My Listings"
-                        android:textColor="@color/black"
-                        android:textSize="13sp"
-                        android:textStyle="bold" />
-                </LinearLayout>
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:padding="16dp">
+
+                        <ImageView
+                            android:layout_width="28dp"
+                            android:layout_height="28dp"
+                            android:src="@drawable/ic_launcher_foreground" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="6dp"
+                            android:fontFamily="@font/roboto_medium"
+                            android:text="My Listings"
+                            android:textColor="@color/black"
+                            android:textSize="13sp" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
             </LinearLayout>
 
+            <!-- Filter Buttons -->
             <LinearLayout
-                android:layout_width="match_parent"
+                android:id="@+id/filter_buttons_layout"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="14dp"
-                android:orientation="horizontal">
+                android:layout_marginTop="16dp"
+                android:orientation="horizontal"
+                app:layout_constraintTop_toBottomOf="@+id/action_buttons_layout"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent">
 
                 <Button
                     android:id="@+id/btnExchange"
@@ -118,6 +129,7 @@
                     android:layout_height="44dp"
                     android:layout_marginEnd="6dp"
                     android:layout_weight="1"
+                    android:backgroundTint="#1B621E"
                     android:text="Exchange"
                     android:textAllCaps="false"
                     android:textStyle="bold" />
@@ -129,35 +141,41 @@
                     android:layout_height="44dp"
                     android:layout_marginStart="6dp"
                     android:layout_weight="1"
+                    android:backgroundTint="#1B621E"
                     android:text="Donate"
                     android:textAllCaps="false"
                     android:textStyle="bold" />
             </LinearLayout>
 
+            <!-- Section Title -->
             <TextView
                 android:id="@+id/tvSectionTitle"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:fontFamily="@font/abril_fatface"
+                android:text="Available for Exchange"
+                android:textColor="#1B621E"
+                android:textSize="20sp"
+                app:layout_constraintTop_toBottomOf="@+id/filter_buttons_layout"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <!-- Book List -->
+            <FrameLayout
+                android:id="@+id/list_container"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:text="Available for Exchange"
-                android:textColor="@color/black"
-                android:textSize="16sp"
-                android:textStyle="bold" />
-
-            <FrameLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp">
+                app:layout_constraintTop_toBottomOf="@+id/tvSectionTitle"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent">
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rvHomeBooks"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:clipToPadding="false"
-                    android:paddingBottom="16dp"
-                    android:paddingTop="4dp"
-                    android.nestedScrollingEnabled="false"
-                    android:scrollbars="vertical" />
+                    android:nestedScrollingEnabled="false"
+                    tools:listitem="@layout/item_home_book" />
 
                 <TextView
                     android:id="@+id/tvEmptyState"
@@ -170,6 +188,6 @@
                     android:visibility="gone" />
             </FrameLayout>
 
-        </LinearLayout>
-    </ScrollView>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
 </layout>

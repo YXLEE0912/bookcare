@@ -6,7 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -57,7 +57,7 @@ public class My_Listings extends Fragment implements BookAdapter.OnItemClickList
         super.onViewCreated(view, savedInstanceState);
 
         tvSubTitle = view.findViewById(R.id.tvSubTitle);
-        ImageButton btnBack = view.findViewById(R.id.BtnLeftArrow);
+        ImageView btnBack = view.findViewById(R.id.BtnLeftArrow);
         Button btnAddBook = view.findViewById(R.id.btnAddBook);
         RecyclerView recyclerView = view.findViewById(R.id.rvBooks);
 

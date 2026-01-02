@@ -11,69 +11,58 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:padding="16dp"
         tools:context=".Add_New_Book">
 
         <!-- Back button and title -->
-        <ImageButton
+
+        <ImageView
             android:id="@+id/BtnLeftArrow"
             android:layout_width="48dp"
             android:layout_height="48dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="44dp"
-            android:background="@android:color/transparent"
-            android:contentDescription="@string/desc"
-            android:padding="16dp"
-            android:scaleType="fitCenter"
-            android:src="@drawable/left_arrow"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="48dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:clickable="true"
+            android:focusable="true"
+            android:padding="8dp"
+            android:rotation="180"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/arrow_icon" />
 
         <TextView
             android:id="@+id/TVListABook"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="4dp"
-            android:fontFamily="@font/poppins"
+            android:fontFamily="@font/abril_fatface"
             android:text="List a Book"
-            android:textSize="18sp"
-            android:textStyle="bold"
+            android:textColor="#1B621E"
+            android:textSize="25sp"
+            app:layout_constraintTop_toTopOf="@+id/BtnLeftArrow"
+            app:layout_constraintBottom_toBottomOf="@+id/BtnLeftArrow"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/BtnLeftArrow" />
-
-        <TextView
-            android:id="@+id/TVTitleDescription"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:fontFamily="@font/poppins"
-            android:text="Share your books with the community!"
-            android:textSize="12sp"
-            app:layout_constraintStart_toStartOf="@+id/TVListABook"
-            app:layout_constraintTop_toBottomOf="@+id/TVListABook" />
+            app:layout_constraintEnd_toEndOf="parent" />
 
         <!-- Book Title -->
-
         <TextView
             android:id="@+id/TVBookTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="24dp"
-            android:fontFamily="@font/roboto_medium"
+            android:layout_marginTop="32dp"
+            android:fontFamily="@font/amethysta"
             android:text="Book Title"
-            android:textSize="12sp"
+            android:textColor="#1B621E"
+            android:textSize="16sp"
             android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="@+id/TVTitleDescription"
-            app:layout_constraintTop_toBottomOf="@+id/TVTitleDescription" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/TVListABook" />
 
         <EditText
             android:id="@+id/ETBookTitle"
             android:layout_width="0dp"
             android:layout_height="48dp"
-            android:layout_marginStart="20dp"
             android:layout_marginTop="8dp"
-            android:layout_marginEnd="20dp"
             android:background="@drawable/rounded_edittext"
             android:ems="10"
             android:fontFamily="@font/roboto_medium"
@@ -81,11 +70,10 @@
             android:inputType="text"
             android:paddingStart="12dp"
             android:paddingEnd="12dp"
-            android:textSize="12sp"
+            android:textSize="14sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/TVBookTitle"
-            app:layout_constraintWidth_max="350dp" />
+            app:layout_constraintTop_toBottomOf="@+id/TVBookTitle" />
 
         <!-- Author -->
         <TextView
@@ -93,20 +81,19 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:fontFamily="@font/roboto_medium"
+            android:fontFamily="@font/amethysta"
             android:text="Author"
-            android:textSize="12sp"
+            android:textColor="#1B621E"
+            android:textSize="16sp"
             android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="@+id/ETBookTitle"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/ETBookTitle" />
 
         <EditText
             android:id="@+id/ETAuthor"
             android:layout_width="0dp"
             android:layout_height="48dp"
-            android:layout_marginStart="20dp"
             android:layout_marginTop="8dp"
-            android:layout_marginEnd="20dp"
             android:background="@drawable/rounded_edittext"
             android:ems="10"
             android:fontFamily="@font/roboto_medium"
@@ -114,59 +101,74 @@
             android:inputType="text"
             android:paddingStart="12dp"
             android:paddingEnd="12dp"
-            android:textSize="12sp"
+            android:textSize="14sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/TVAuthor"
-            app:layout_constraintWidth_max="350dp" />
+            app:layout_constraintTop_toBottomOf="@+id/TVAuthor" />
 
-        <!-- Genre -->
-        <TextView
-            android:id="@+id/TVGenre"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:fontFamily="@font/roboto_medium"
-            android:text="Genre"
-            android:textSize="12sp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="@+id/ETAuthor"
-            app:layout_constraintTop_toBottomOf="@+id/ETAuthor" />
-
-        <Spinner
-            android:id="@+id/SPGenre"
+        <!-- Genre and Condition -->
+        <LinearLayout
+            android:id="@+id/genre_condition_layout"
             android:layout_width="0dp"
-            android:layout_height="48dp"
-            android:layout_marginTop="8dp"
-            android:background="@drawable/rounded_spinner"
-            android:entries="@array/book_genre"
-            app:layout_constraintEnd_toEndOf="@+id/ETAuthor"
-            app:layout_constraintStart_toStartOf="@+id/TVGenre"
-            app:layout_constraintTop_toBottomOf="@+id/TVGenre" />
-
-        <!-- Condition -->
-        <TextView
-            android:id="@+id/TVCondition"
-            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:orientation="horizontal"
             android:layout_marginTop="16dp"
-            android:fontFamily="@font/roboto_medium"
-            android:text="Condition"
-            android:textSize="12sp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="@+id/SPGenre"
-            app:layout_constraintTop_toBottomOf="@+id/SPGenre" />
+            app:layout_constraintTop_toBottomOf="@+id/ETAuthor"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
 
-        <Spinner
-            android:id="@+id/SPCondition"
-            android:layout_width="0dp"
-            android:layout_height="48dp"
-            android:layout_marginTop="8dp"
-            android:background="@drawable/rounded_spinner"
-            android:entries="@array/condition_type"
-            app:layout_constraintEnd_toEndOf="@+id/SPGenre"
-            app:layout_constraintStart_toStartOf="@+id/TVCondition"
-            app:layout_constraintTop_toBottomOf="@+id/TVCondition" />
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:layout_marginEnd="8dp">
+
+                <TextView
+                    android:id="@+id/TVGenre"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/amethysta"
+                    android:text="Genre"
+                    android:textColor="#1B621E"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <Spinner
+                    android:id="@+id/SPGenre"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/rounded_spinner"
+                    android:entries="@array/book_genre" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:layout_marginStart="8dp">
+
+                <TextView
+                    android:id="@+id/TVCondition"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/amethysta"
+                    android:text="Condition"
+                    android:textColor="#1B621E"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <Spinner
+                    android:id="@+id/SPCondition"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/rounded_spinner"
+                    android:entries="@array/condition_type" />
+            </LinearLayout>
+        </LinearLayout>
 
         <!-- Listing Type -->
         <TextView
@@ -174,52 +176,48 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:fontFamily="@font/roboto_medium"
+            android:fontFamily="@font/amethysta"
             android:text="Listing Type"
-            android:textSize="12sp"
+            android:textColor="#1B621E"
+            android:textSize="16sp"
             android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="@+id/SPCondition"
-            app:layout_constraintTop_toBottomOf="@+id/SPCondition" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/genre_condition_layout" />
 
         <RadioGroup
             android:id="@+id/radioGroupListing"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginEnd="20dp"
             android:layout_marginTop="8dp"
             android:orientation="vertical"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/TVListingType"
-            app:layout_constraintWidth_max="350dp">
+            app:layout_constraintTop_toBottomOf="@id/TVListingType">
 
             <include
                 android:id="@+id/cardExchange"
+                layout="@layout/radio_card"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                layout="@layout/radio_card" />
+                android:layout_marginBottom="8dp" />
 
             <include
                 android:id="@+id/cardDonate"
+                layout="@layout/radio_card"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                layout="@layout/radio_card" />
-
+                android:layout_height="wrap_content" />
         </RadioGroup>
 
         <!-- Description -->
-
         <TextView
             android:id="@+id/TVDescription"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="36dp"
-            android:layout_marginTop="24dp"
-            android:fontFamily="@font/roboto_medium"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/amethysta"
             android:text="Description"
-            android:textSize="12sp"
+            android:textColor="#1B621E"
+            android:textSize="16sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/radioGroupListing" />
@@ -228,52 +226,51 @@
             android:id="@+id/ETDescription"
             android:layout_width="0dp"
             android:layout_height="120dp"
-            android:layout_marginStart="20dp"
             android:layout_marginTop="8dp"
-            android:layout_marginEnd="20dp"
             android:background="@drawable/rounded_edittext"
-            android:ems="10"
-            android:fontFamily="@font/roboto_medium"
             android:gravity="start|top"
             android:hint="Describe the book's content and condition"
             android:inputType="textMultiLine"
             android:padding="12dp"
-            android:textSize="12sp"
+            android:textSize="14sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/TVDescription"
-            app:layout_constraintWidth_max="350dp" />
+            app:layout_constraintTop_toBottomOf="@+id/TVDescription" />
 
         <!-- Buttons -->
         <Button
-            android:id="@+id/BtnCancel"
-            style="?attr/materialButtonOutlinedStyle"
-            android:layout_width="165dp"
-            android:layout_height="40dp"
+            android:id="@+id/BtnListBook"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
             android:layout_marginTop="24dp"
+            android:layout_marginBottom="16dp"
+            android:backgroundTint="#1B621E"
+            android:fontFamily="@font/roboto_medium"
+            android:text="+ Add New Book"
+            android:textColor="@android:color/white"
+            android:textSize="18sp"
+            app:cornerRadius="16dp"
+            app:layout_constraintTop_toBottomOf="@+id/ETDescription"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/BtnCancel"/>
+
+        <Button
+            android:id="@+id/BtnCancel"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_marginBottom="32dp"
             android:fontFamily="@font/poppins"
             android:text="Cancel"
             android:textColor="#45543D"
             app:cornerRadius="16dp"
-            app:layout_constraintStart_toStartOf="@+id/ETBookTitle"
-            app:layout_constraintTop_toBottomOf="@+id/ETDescription"
             app:strokeColor="#45543D"
-            app:strokeWidth="2dp" />
-
-        <Button
-            android:id="@+id/BtnListBook"
-            android:layout_width="165dp"
-            android:layout_height="40dp"
-            android:layout_marginTop="24dp"
-            android:backgroundTint="#7C8A67"
-            android:fontFamily="@font/roboto_medium"
-            android:text="+  Add New Book"
-            android:textColor="#FFFFFF"
-            app:cornerRadius="16dp"
-            app:layout_constraintEnd_toEndOf="@+id/ETBookTitle"
-            app:layout_constraintTop_toBottomOf="@+id/ETDescription" />
+            app:strokeWidth="2dp"
+            app:layout_constraintTop_toBottomOf="@+id/BtnListBook"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.core.widget.NestedScrollView>
-
-<!--haha-->

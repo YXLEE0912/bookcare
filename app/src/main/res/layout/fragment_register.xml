@@ -150,6 +150,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
+            android:backgroundTint="#1B621E"
             android:text="Register"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="@+id/card_input_fields"

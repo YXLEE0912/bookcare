@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -60,17 +61,17 @@ public class ExploreFragment extends Fragment {
             showingExchange = false;
             showDonationBooks();
         });
-        
+
         // Setup search functionality
         binding.etSearch.addTextChangedListener(new android.text.TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
-            
+
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 filterBooks(s.toString());
             }
-            
+
             @Override
             public void afterTextChanged(android.text.Editable s) {}
         });
@@ -134,7 +135,7 @@ public class ExploreFragment extends Fragment {
         bookAdapter.updateBooks(donationBooks);
         binding.tvSectionTitle.setText("Available for Donation");
     }
-    
+
     private void filterBooks(String searchQuery) {
         if (searchQuery.isEmpty()) {
             // Show current category (exchange or donation)
@@ -145,10 +146,10 @@ public class ExploreFragment extends Fragment {
             }
             return;
         }
-        
+
         String query = searchQuery.toLowerCase().trim();
         List<Book> filteredBooks = new ArrayList<>();
-        
+
         List<Book> sourceList = showingExchange ? exchangeBooks : donationBooks;
         for (Book book : sourceList) {
             boolean matches = false;
@@ -159,12 +160,12 @@ public class ExploreFragment extends Fragment {
             } else if (book.getGenre() != null && book.getGenre().toLowerCase().contains(query)) {
                 matches = true;
             }
-            
+
             if (matches) {
                 filteredBooks.add(book);
             }
         }
-        
+
         bookAdapter.updateBooks(filteredBooks);
     }
 

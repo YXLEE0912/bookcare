@@ -62,7 +62,7 @@ public class EcoPointsFragment extends Fragment {
         binding.backButton.setOnClickListener(v -> navController.navigateUp());
 
         // Book Exchange Box Click Listener
-        binding.bookExchangeBox.setOnClickListener(v -> {
+        binding.bookExchangeCard.setOnClickListener(v -> {
             Intent intent = new Intent(getActivity(), activity_book_exchange.class);
             // Pass current user stats to the activity if needed, but the activity seems to use Intent extras for "what if" calculation
             // If the user wants to see their stats, they might expect the activity to load them. 
@@ -71,7 +71,7 @@ public class EcoPointsFragment extends Fragment {
         });
 
         // Book Donation Box Click Listener
-        binding.bookDonationBox.setOnClickListener(v -> {
+        binding.bookDonationCard.setOnClickListener(v -> {
             Intent intent = new Intent(getActivity(), activity_book_donation.class);
             startActivity(intent);
         });

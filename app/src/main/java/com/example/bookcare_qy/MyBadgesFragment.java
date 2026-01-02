@@ -4,7 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -59,7 +59,7 @@ public class MyBadgesFragment extends Fragment {
         TextView tvProgressText = view.findViewById(R.id.tvProgressText);
         TextView tvBadgesHeader = view.findViewById(R.id.tvBadgesHeader);
         RecyclerView rvBadges = view.findViewById(R.id.rvBadges);
-        ImageButton btnBack = view.findViewById(R.id.btn_back);
+        ImageView btnBack = view.findViewById(R.id.btn_back);
 
         // Setup RecyclerView with a GridLayoutManager
         badgeAdapter = new BadgeAdapter(allBadges);
