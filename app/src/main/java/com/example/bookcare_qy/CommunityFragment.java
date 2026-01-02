@@ -154,6 +154,7 @@ public class CommunityFragment extends Fragment implements PostAdapter.OnPostInt
                                 }
                                 
                                 ForumPost newPost = new ForumPost(posterName, selectedPostType, title, message, new Date(), 0);
+                                newPost.posterId = user.getUid();
                                 postsRef.push().setValue(newPost);
                             });
                         } else {

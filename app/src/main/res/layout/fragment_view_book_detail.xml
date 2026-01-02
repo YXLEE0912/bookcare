@@ -173,11 +173,13 @@
 
                     <!-- Owner Profile Image Placeholder -->
                     <ImageView
+                        android:id="@+id/owner_profile_picture"
                         android:layout_width="48dp"
                         android:layout_height="48dp"
                         android:layout_marginEnd="12dp"
                         android:background="@drawable/circular_image_background"
                         android:contentDescription="Owner Profile Picture"
+                        android:scaleType="centerCrop"
                         tools:src="@tools:sample/avatars" />
 
                     <!-- 2. Text Column (Vertical for Name and Phone) -->

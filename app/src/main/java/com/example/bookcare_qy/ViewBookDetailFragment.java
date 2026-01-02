@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -16,6 +17,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
+import com.bumptech.glide.Glide;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -59,6 +61,7 @@ public class ViewBookDetailFragment extends Fragment {
             TextView tvDescription = view.findViewById(R.id.book_description);
             TextView tvOwnerName = view.findViewById(R.id.owner_name);
             TextView tvOwnerPhone = view.findViewById(R.id.owner_phone_number);
+            ImageView ivOwnerProfile = view.findViewById(R.id.owner_profile_picture);
             Button btnRequest = view.findViewById(R.id.bottom_action_button);
 
             tvTitle.setText(book.getTitle() != null ? book.getTitle() : "Unknown Title");
@@ -74,7 +77,7 @@ public class ViewBookDetailFragment extends Fragment {
             tvDescription.setText(description);
             
             // Load owner information from Firebase
-            loadOwnerInformation(tvOwnerName, tvOwnerPhone, book.getOwnerId());
+            loadOwnerInformation(tvOwnerName, tvOwnerPhone, ivOwnerProfile, book.getOwnerId());
 
             if ("Donation".equalsIgnoreCase(book.getListingType())) {
                 btnRequest.setText("Request Donation");
@@ -94,10 +97,11 @@ public class ViewBookDetailFragment extends Fragment {
         return view;
     }
 
-    private void loadOwnerInformation(TextView tvOwnerName, TextView tvOwnerPhone, String ownerId) {
+    private void loadOwnerInformation(TextView tvOwnerName, TextView tvOwnerPhone, ImageView ivOwnerProfile, String ownerId) {
         if (ownerId == null || ownerId.isEmpty()) {
             tvOwnerName.setText("Unknown User");
             tvOwnerPhone.setText("N/A");
+            ivOwnerProfile.setImageResource(R.drawable.ic_account_circle);
             return;
         }
         
@@ -112,9 +116,22 @@ public class ViewBookDetailFragment extends Fragment {
                 if (owner != null) {
                     tvOwnerName.setText(owner.getUsername() != null ? owner.getUsername() : "Unknown User");
                     tvOwnerPhone.setText(owner.getPhone() != null ? owner.getPhone() : "N/A");
+                    
+                    // Load profile picture
+                    if (owner.getProfilePictureUrl() != null && !owner.getProfilePictureUrl().isEmpty()) {
+                        Glide.with(requireContext())
+                                .load(owner.getProfilePictureUrl())
+                                .placeholder(R.drawable.ic_account_circle)
+                                .error(R.drawable.ic_account_circle)
+                                .circleCrop()
+                                .into(ivOwnerProfile);
+                    } else {
+                        ivOwnerProfile.setImageResource(R.drawable.ic_account_circle);
+                    }
                 } else {
                     tvOwnerName.setText("Unknown User");
                     tvOwnerPhone.setText("N/A");
+                    ivOwnerProfile.setImageResource(R.drawable.ic_account_circle);
                 }
             }
 
@@ -122,6 +139,7 @@ public class ViewBookDetailFragment extends Fragment {
             public void onCancelled(@NonNull DatabaseError error) {
                 tvOwnerName.setText("Unknown User");
                 tvOwnerPhone.setText("N/A");
+                ivOwnerProfile.setImageResource(R.drawable.ic_account_circle);
             }
         });
     }

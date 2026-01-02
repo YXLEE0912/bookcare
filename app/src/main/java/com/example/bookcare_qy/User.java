@@ -17,6 +17,7 @@ public class User {
     public int booksExchanged;
     public int credits; // Credits for exchanging books (1 credit per uploaded book)
     public int badgeLevel; // Badge level (50 points per level, starts at 0)
+    public String profilePictureUrl; // URL of the user's profile picture
     
     // Default constructor required for Firebase
     public User() {
@@ -82,6 +83,9 @@ public class User {
     
     public int getBadgeLevel() { return badgeLevel; }
     public void setBadgeLevel(int badgeLevel) { this.badgeLevel = badgeLevel; }
+    
+    public String getProfilePictureUrl() { return profilePictureUrl; }
+    public void setProfilePictureUrl(String profilePictureUrl) { this.profilePictureUrl = profilePictureUrl; }
     
     /**
      * Calculate badge level based on total points (50 points per level, starting at level 1)

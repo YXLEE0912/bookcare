@@ -21,8 +21,12 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 import android.widget.Spinner;
 import android.widget.AdapterView;
+import android.widget.Toast;
 
 public class ProfileEditFragment extends Fragment {
 
@@ -119,12 +123,11 @@ public class ProfileEditFragment extends Fragment {
 
         // Save button
         binding.buttonSave.setOnClickListener(v -> {
-            saveUserProfileToFirebase();
-            navController.navigateUp();
+            saveUserProfileToFirebase(navController);
         });
     }
 
-    private void saveUserProfileToFirebase() {
+    private void saveUserProfileToFirebase(NavController navController) {
         FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
         if (currentUser == null) return;
 
@@ -140,12 +143,51 @@ public class ProfileEditFragment extends Fragment {
         String location = sharedViewModel.location.getValue();
         String genrePreference = sharedViewModel.genrePreference.getValue();
 
+        // Save text fields first
         if (name != null) userRef.child("username").setValue(name);
         if (age != null) userRef.child("age").setValue(age);
         if (bio != null) userRef.child("bio").setValue(bio);
         if (phone != null) userRef.child("phone").setValue(phone);
         if (location != null) userRef.child("address").setValue(location);
         if (genrePreference != null) userRef.child("genrePreference").setValue(genrePreference);
+
+        // Upload profile picture if one was selected
+        Uri profileImageUri = sharedViewModel.profileImageUri.getValue();
+        if (profileImageUri != null) {
+            uploadProfilePicture(profileImageUri, currentUser.getUid(), userRef, navController);
+        } else {
+            navController.navigateUp();
+        }
+    }
+
+    private void uploadProfilePicture(Uri imageUri, String userId, DatabaseReference userRef, NavController navController) {
+        FirebaseStorage storage = FirebaseStorage.getInstance();
+        StorageReference storageRef = storage.getReference();
+        StorageReference profileImagesRef = storageRef.child("profile_pictures/" + userId + ".jpg");
+
+        UploadTask uploadTask = profileImagesRef.putFile(imageUri);
+
+        uploadTask.addOnSuccessListener(taskSnapshot -> {
+            // Get download URL
+            profileImagesRef.getDownloadUrl().addOnSuccessListener(uri -> {
+                // Save URL to user profile
+                userRef.child("profilePictureUrl").setValue(uri.toString())
+                        .addOnSuccessListener(aVoid -> {
+                            Toast.makeText(requireContext(), "Profile saved successfully!", Toast.LENGTH_SHORT).show();
+                            navController.navigateUp();
+                        })
+                        .addOnFailureListener(e -> {
+                            Toast.makeText(requireContext(), "Failed to save profile picture URL", Toast.LENGTH_SHORT).show();
+                            navController.navigateUp();
+                        });
+            }).addOnFailureListener(e -> {
+                Toast.makeText(requireContext(), "Failed to get image URL", Toast.LENGTH_SHORT).show();
+                navController.navigateUp();
+            });
+        }).addOnFailureListener(e -> {
+            Toast.makeText(requireContext(), "Failed to upload profile picture", Toast.LENGTH_SHORT).show();
+            navController.navigateUp();
+        });
     }
 
     private void loadUserDataFromFirebase() {
@@ -192,6 +234,10 @@ public class ProfileEditFragment extends Fragment {
                                         }
                                     }
                                 }
+                            }
+                            // Load profile picture URL if available
+                            if (user.getProfilePictureUrl() != null && !user.getProfilePictureUrl().isEmpty()) {
+                                sharedViewModel.profileImageUri.setValue(Uri.parse(user.getProfilePictureUrl()));
                             }
                         }
                     }
