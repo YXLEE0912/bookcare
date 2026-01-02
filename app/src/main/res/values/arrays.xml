@@ -1,0 +1,18 @@
+<resources>
+    <string-array name="book_genre">
+        <item>Fantasy</item>
+        <item>Mystery</item>
+        <item>Thriller</item>
+        <item>Romance</item>
+        <item>Horror</item>
+        <item>Adventure</item>
+        <item>Dystopian</item>
+    </string-array>
+
+    <string-array name="condition_type">
+        <item>New</item>
+        <item>Used - Like New</item>
+        <item>Used - Good</item>
+        <item>Used - Fair</item>
+    </string-array>
+</resources>
