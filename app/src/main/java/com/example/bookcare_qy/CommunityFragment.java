@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -15,6 +14,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.example.bookcare_qy.databinding.FragmentCommunityBinding;
+import com.google.android.material.button.MaterialButtonToggleGroup;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -97,25 +97,18 @@ public class CommunityFragment extends Fragment implements PostAdapter.OnPostInt
 
         final EditText etPostTitle = dialogView.findViewById(R.id.etPostTitle);
         final EditText etPostMessage = dialogView.findViewById(R.id.etPostMessage);
+        final MaterialButtonToggleGroup toggleGroup = dialogView.findViewById(R.id.toggleGroupPostType);
 
-        final Button btnDiscussion = dialogView.findViewById(R.id.btnDiscussion);
-        final Button btnReview = dialogView.findViewById(R.id.btnReview);
-        final Button btnEvent = dialogView.findViewById(R.id.btnEvent);
-        
-        // Set initial colors based on selected post type
-        updatePostTypeButtonColors(btnDiscussion, btnReview, btnEvent, selectedPostType);
-
-        btnDiscussion.setOnClickListener(v -> {
-            selectedPostType = "Discussion";
-            updatePostTypeButtonColors(btnDiscussion, btnReview, btnEvent, selectedPostType);
-        });
-        btnReview.setOnClickListener(v -> {
-            selectedPostType = "Review";
-            updatePostTypeButtonColors(btnDiscussion, btnReview, btnEvent, selectedPostType);
-        });
-        btnEvent.setOnClickListener(v -> {
-            selectedPostType = "Event";
-            updatePostTypeButtonColors(btnDiscussion, btnReview, btnEvent, selectedPostType);
+        toggleGroup.addOnButtonCheckedListener((group, checkedId, isChecked) -> {
+            if (isChecked) {
+                if (checkedId == R.id.btnDiscussion) {
+                    selectedPostType = "Discussion";
+                } else if (checkedId == R.id.btnReview) {
+                    selectedPostType = "Review";
+                } else if (checkedId == R.id.btnEvent) {
+                    selectedPostType = "Event";
+                }
+            }
         });
 
         builder.setTitle("Create a New Post")
@@ -131,7 +124,7 @@ public class CommunityFragment extends Fragment implements PostAdapter.OnPostInt
                                     .getReference(Constants.PATH_USERS)
                                     .child(user.getUid())
                                     .child("username");
-                            
+
                             userRef.get().addOnCompleteListener(task -> {
                                 String posterName = "Anonymous";
                                 if (task.isSuccessful() && task.getResult().getValue() != null) {
@@ -148,7 +141,7 @@ public class CommunityFragment extends Fragment implements PostAdapter.OnPostInt
                                         posterName = user.getEmail().split("@")[0];
                                     }
                                 }
-                                
+
                                 ForumPost newPost = new ForumPost(posterName, selectedPostType, title, message, new Date(), 0);
                                 newPost.posterId = user.getUid();
                                 postsRef.push().setValue(newPost);
@@ -164,22 +157,6 @@ public class CommunityFragment extends Fragment implements PostAdapter.OnPostInt
 
         AlertDialog alertDialog = builder.create();
         alertDialog.show();
-    }
-    
-    private void updatePostTypeButtonColors(Button btnDiscussion, Button btnReview, Button btnEvent, String selectedType) {
-        // Reset all buttons to default color
-        btnDiscussion.setBackgroundTintList(android.content.res.ColorStateList.valueOf(0xFF7C8A67)); // Default green
-        btnReview.setBackgroundTintList(android.content.res.ColorStateList.valueOf(0xFF7C8A67));
-        btnEvent.setBackgroundTintList(android.content.res.ColorStateList.valueOf(0xFF7C8A67));
-        
-        // Set selected button to different color based on type
-        if ("Discussion".equals(selectedType)) {
-            btnDiscussion.setBackgroundTintList(android.content.res.ColorStateList.valueOf(0xFF2196F3)); // Blue
-        } else if ("Review".equals(selectedType)) {
-            btnReview.setBackgroundTintList(android.content.res.ColorStateList.valueOf(0xFFFF9800)); // Orange
-        } else if ("Event".equals(selectedType)) {
-            btnEvent.setBackgroundTintList(android.content.res.ColorStateList.valueOf(0xFF9C27B0)); // Purple
-        }
     }
 
     @Override

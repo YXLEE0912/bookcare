@@ -1,86 +1,119 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:padding="24dp">
+    android:layout_height="wrap_content">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Post Type"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        android:layout_marginBottom="8dp"/>
-
-    <!-- Container for the post type buttons -->
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginBottom="16dp">
+        android:padding="24dp">
 
-        <Button
-            android:id="@+id/btnDiscussion"
-            style="@style/AppButton"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_marginEnd="4dp"
-            android:layout_weight="1"
-            android:backgroundTint="#7C8A67"
-            android:text="Discussion"
-            android:textAllCaps="true"
-            android:textColor="#000000"
-            android:textSize="9sp"
-            android:textStyle="bold" />
+        <TextView
+            android:id="@+id/tvPostTypeLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/amethysta"
+            android:text="Post Type"
+            android:textColor="#1B621E"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-        <Button
-            android:id="@+id/btnReview"
-            style="@style/AppButton"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_marginStart="4dp"
-            android:layout_marginEnd="4dp"
-            android:layout_weight="1"
-            android:backgroundTint="#7C8A67"
-            android:text="Review"
-            android:textAllCaps="true"
-            android:textColor="#000000"
-            android:textSize="9sp"
-            android:textStyle="bold" />
-
-        <Button
-            android:id="@+id/btnEvent"
-            style="@style/AppButton"
+        <com.google.android.material.button.MaterialButtonToggleGroup
+            android:id="@+id/toggleGroupPostType"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
-            android:layout_weight="1"
-            android:backgroundTint="#7C8A67"
-            android:text="Event"
-            android:textAllCaps="true"
-            android:textColor="#000000"
-            android:textSize="9sp"
-            android:textStyle="bold" />
-    </LinearLayout>
+            android:layout_marginTop="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvPostTypeLabel"
+            app:selectionRequired="true"
+            app:singleSelection="true">
 
+            <Button
+                android:id="@+id/btnDiscussion"
+                style="?attr/materialButtonOutlinedStyle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Discussion"
+                android:textAllCaps="false" />
 
-    <EditText
-        android:id="@+id/etPostTitle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:hint="Title"
-        android:inputType="textCapSentences" />
+            <Button
+                android:id="@+id/btnReview"
+                style="?attr/materialButtonOutlinedStyle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Review"
+                android:textAllCaps="false" />
 
-    <EditText
-        android:id="@+id/etPostMessage"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="What's on your mind?"
-        android:inputType="textMultiLine"
-        android.minLines="3"
-        android:gravity="top"/>
+            <Button
+                android:id="@+id/btnEvent"
+                style="?attr/materialButtonOutlinedStyle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Event"
+                android:textAllCaps="false" />
+        </com.google.android.material.button.MaterialButtonToggleGroup>
 
-</LinearLayout>
+        <TextView
+            android:id="@+id/tvTitleLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/amethysta"
+            android:text="Title"
+            android:textColor="#1B621E"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/toggleGroupPostType" />
+
+        <EditText
+            android:id="@+id/etPostTitle"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/rounded_edittext"
+            android:hint="Enter post title"
+            android:inputType="textCapSentences"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvTitleLabel" />
+
+        <TextView
+            android:id="@+id/tvMessageLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/amethysta"
+            android:text="Message"
+            android:textColor="#1B621E"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/etPostTitle" />
+
+        <EditText
+            android:id="@+id/etPostMessage"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/rounded_edittext"
+            android:gravity="top"
+            android:hint="What's on your mind?"
+            android:inputType="textMultiLine"
+            android:minLines="4"
+            android:padding="12dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvMessageLabel" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
